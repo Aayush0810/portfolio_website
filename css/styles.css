@@ -783,9 +783,9 @@ body.nav-open .nav__toggle span:nth-child(3) { transform: translateY(-7px) rotat
    ========================================================================== */
 .contact-layout {
   display: grid;
-  grid-template-columns: 1fr 1.25fr;
+  grid-template-columns: 1fr 1.3fr;
   gap: clamp(36px, 5vw, 72px);
-  align-items: start;
+  align-items: center;
 }
 
 .contact-aside .overline { color: var(--gold-bright); }
@@ -829,10 +829,12 @@ body.nav-open .nav__toggle span:nth-child(3) { transform: translateY(-7px) rotat
 
 /* Form */
 .form-card {
-  background: var(--paper);
-  border: 1px solid var(--line);
+  background: rgba(16, 30, 51, 0.5);
+  border: 1px solid var(--line-dark);
   padding: clamp(28px, 4vw, 52px);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 .form-grid {
   display: grid;
@@ -846,17 +848,17 @@ body.nav-open .nav__toggle span:nth-child(3) { transform: translateY(-7px) rotat
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--slate);
+  color: var(--on-dark-soft);
 }
-.field label .req { color: var(--gold-deep); }
+.field label .req { color: var(--gold-bright); }
 .field input,
 .field select,
 .field textarea {
   font-family: var(--sans);
   font-size: 1rem;
-  color: var(--ink);
-  background: #fbfaf6;
-  border: 1px solid var(--line);
+  color: var(--on-dark);
+  background: rgba(7, 15, 28, 0.5);
+  border: 1px solid var(--line-dark);
   border-radius: 2px;
   padding: 14px 16px;
   transition: border-color 0.3s var(--ease), box-shadow 0.3s var(--ease),
@@ -865,27 +867,28 @@ body.nav-open .nav__toggle span:nth-child(3) { transform: translateY(-7px) rotat
 }
 .field textarea { resize: vertical; min-height: 130px; }
 .field select { appearance: none; cursor: pointer;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23a5843f' d='M6 8 0 0h12z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23d4b878' d='M6 8 0 0h12z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 16px center;
   padding-right: 40px;
 }
+.field select option { background: var(--navy-850); color: var(--on-dark); }
 .field input:focus,
 .field select:focus,
 .field textarea:focus {
   outline: none;
   border-color: var(--gold);
-  background: #fff;
-  box-shadow: 0 0 0 3px rgba(194, 161, 91, 0.14);
+  background: rgba(7, 15, 28, 0.72);
+  box-shadow: 0 0 0 3px rgba(194, 161, 91, 0.16);
 }
 .field input::placeholder,
-.field textarea::placeholder { color: var(--muted); }
+.field textarea::placeholder { color: var(--on-dark-faint); }
 
 .field.invalid input,
 .field.invalid select,
-.field.invalid textarea { border-color: #c0563f; background: #fff8f6; }
+.field.invalid textarea { border-color: #e07a5f; background: rgba(224, 122, 95, 0.1); }
 .field .error {
-  font-size: 12px; color: #c0563f; letter-spacing: 0.02em;
+  font-size: 12px; color: #e79a86; letter-spacing: 0.02em;
   text-transform: none; font-weight: 500; display: none;
 }
 .field.invalid .error { display: block; }
@@ -896,11 +899,11 @@ body.nav-open .nav__toggle span:nth-child(3) { transform: translateY(-7px) rotat
   gap: 12px;
   align-items: flex-start;
   font-size: 0.9rem;
-  color: var(--slate);
+  color: var(--on-dark-soft);
   line-height: 1.5;
 }
-.consent input { width: 18px; height: 18px; margin-top: 3px; flex: none; accent-color: var(--gold-deep); }
-.consent a { color: var(--gold-deep); border-bottom: 1px solid currentColor; }
+.consent input { width: 18px; height: 18px; margin-top: 3px; flex: none; accent-color: var(--gold); }
+.consent a { color: var(--gold-bright); border-bottom: 1px solid currentColor; }
 
 .form-actions {
   grid-column: 1 / -1;
@@ -925,8 +928,8 @@ body.nav-open .nav__toggle span:nth-child(3) { transform: translateY(-7px) rotat
   border: 1px solid var(--gold);
   color: var(--gold-deep);
 }
-.form-success h3 { font-size: 1.7rem; margin-bottom: 12px; }
-.form-success p { color: var(--slate); max-width: 420px; margin-inline: auto; }
+.form-success h3 { font-size: 1.7rem; margin-bottom: 12px; color: var(--on-dark); }
+.form-success p { color: var(--on-dark-soft); max-width: 420px; margin-inline: auto; }
 form.hide { display: none; }
 
 /* ==========================================================================
