@@ -81,6 +81,61 @@
   var yr = document.querySelector("[data-year]");
   if (yr) yr.textContent = new Date().getFullYear();
 
+  /* ----------  Carousel (manual — no autoplay)  ---------- */
+  document.querySelectorAll("[data-carousel]").forEach(function (root) {
+    var track = root.querySelector(".carousel__track");
+    var slides = Array.prototype.slice.call(root.querySelectorAll(".carousel__slide"));
+    if (!track || slides.length === 0) return;
+    var dotsWrap = root.querySelector(".carousel__dots");
+    var prevBtn = root.querySelector(".carousel__btn--prev");
+    var nextBtn = root.querySelector(".carousel__btn--next");
+    var index = 0;
+
+    var dots = slides.map(function (_, i) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "carousel__dot";
+      b.setAttribute("aria-label", "Go to slide " + (i + 1));
+      b.addEventListener("click", function () { go(i); });
+      if (dotsWrap) dotsWrap.appendChild(b);
+      return b;
+    });
+
+    function go(i) {
+      index = (i + slides.length) % slides.length;
+      track.style.transform = "translateX(" + (-index * 100) + "%)";
+      dots.forEach(function (d, di) { d.classList.toggle("is-active", di === index); });
+      slides.forEach(function (s, si) { s.setAttribute("aria-hidden", si === index ? "false" : "true"); });
+    }
+
+    if (prevBtn) prevBtn.addEventListener("click", function () { go(index - 1); });
+    if (nextBtn) nextBtn.addEventListener("click", function () { go(index + 1); });
+
+    root.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowLeft") go(index - 1);
+      else if (e.key === "ArrowRight") go(index + 1);
+    });
+
+    // Touch swipe
+    var startX = null;
+    root.addEventListener("touchstart", function (e) { startX = e.touches[0].clientX; }, { passive: true });
+    root.addEventListener("touchend", function (e) {
+      if (startX === null) return;
+      var dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 40) { if (dx < 0) go(index + 1); else go(index - 1); }
+      startX = null;
+    });
+
+    // Hide single-slide controls
+    if (slides.length < 2) {
+      if (prevBtn) prevBtn.style.display = "none";
+      if (nextBtn) nextBtn.style.display = "none";
+      if (dotsWrap) dotsWrap.style.display = "none";
+    }
+
+    go(0);
+  });
+
   /* ----------  Contact form  ---------- */
   var form = document.getElementById("contact-form");
   if (!form) return;

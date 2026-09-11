@@ -1190,3 +1190,86 @@ form.hide { display: none; }
   .gallery { grid-template-columns: 1fr; }
   .ibrics-figure::after { display: none; }
 }
+
+/* ==========================================================================
+   CAROUSEL (About — engagements)
+   ========================================================================== */
+.carousel {
+  --media-h: clamp(320px, 46vw, 500px);
+  position: relative;
+  max-width: 940px;
+  margin-inline: auto;
+  outline: none;
+}
+.carousel__viewport { overflow: hidden; }
+.carousel__track {
+  display: flex;
+  transition: transform 0.55s var(--ease);
+  will-change: transform;
+}
+.carousel__slide { flex: 0 0 100%; min-width: 0; margin: 0; }
+.carousel__media {
+  height: var(--media-h);
+  background: #0b0b0b;
+  border: 1px solid var(--line);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.carousel__media img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.carousel__caption {
+  text-align: center;
+  padding: 20px 40px 0;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--slate);
+  min-height: 42px;
+}
+.carousel__btn {
+  position: absolute;
+  top: calc(var(--media-h) / 2);
+  transform: translateY(-50%);
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  background: rgba(10, 22, 38, 0.72);
+  color: var(--gold-bright);
+  border: 1px solid var(--line-dark);
+  border-radius: 50%;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 2;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transition: background 0.3s var(--ease), color 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.carousel__btn:hover { background: var(--gold); color: var(--navy-950); }
+.carousel__btn--prev { left: -6px; }
+.carousel__btn--next { right: -6px; }
+.carousel__dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 26px;
+}
+.carousel__dot {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--line);
+  cursor: pointer;
+  transition: background 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.carousel__dot:hover { background: var(--gold-deep); }
+.carousel__dot.is-active { background: var(--gold); transform: scale(1.3); }
+
+@media (max-width: 600px) {
+  .carousel__btn--prev { left: 6px; }
+  .carousel__btn--next { right: 6px; }
+  .carousel__caption { padding-inline: 22px; }
+}
