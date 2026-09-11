@@ -277,6 +277,7 @@ p { margin: 0 0 1.1em; }
 }
 .brand:hover .brand__mark { background: var(--gold); color: var(--navy-950); }
 .brand__logo { height: clamp(40px, 5.5vw, 54px); width: auto; display: block; }
+.footer-brand .brand__logo { height: 78px; }
 .brand__text { display: flex; flex-direction: column; line-height: 1.1; }
 .brand__name {
   font-family: var(--serif);
