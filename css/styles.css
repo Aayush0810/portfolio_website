@@ -279,8 +279,8 @@ p { margin: 0 0 1.1em; }
 .brand__logo { height: clamp(50px, 6.2vw, 68px); width: auto; display: block; }
 /* Header shows a crest-focused crop of the logo (name/tagline trimmed) for prominence */
 .site-header .brand__logo {
-  height: clamp(54px, 5.6vw, 66px);
-  aspect-ratio: 1.62 / 1;
+  height: clamp(64px, 6.6vw, 82px);
+  aspect-ratio: 1.66 / 1;
   width: auto;
   object-fit: cover;
   object-position: 50% 0%;
