@@ -277,6 +277,13 @@ p { margin: 0 0 1.1em; }
 }
 .brand:hover .brand__mark { background: var(--gold); color: var(--navy-950); }
 .brand__logo { height: clamp(50px, 6.2vw, 68px); width: auto; display: block; }
+/* Header shows a crest-focused crop of the logo (name/tagline trimmed) for prominence */
+.site-header .brand__logo {
+  width: clamp(90px, 9vw, 110px);
+  height: clamp(52px, 5.4vw, 64px);
+  object-fit: cover;
+  object-position: 50% 2%;
+}
 .footer-brand .brand__logo { height: 78px; }
 .brand__text { display: flex; flex-direction: column; line-height: 1.1; }
 .brand__name {
@@ -789,6 +796,7 @@ body.nav-open .nav__toggle span:nth-child(3) { transform: translateY(-7px) rotat
 }
 /* Contact hero sits closer to the header — less empty space above the form */
 .page-hero.contact-hero { padding-top: clamp(118px, 12vw, 146px); padding-bottom: clamp(48px, 6vw, 80px); }
+.contact-breadcrumb { margin-bottom: clamp(22px, 3vw, 40px); }
 
 .contact-aside .overline { color: var(--gold-bright); }
 .contact-channels { list-style: none; margin: 34px 0 0; padding: 0; }
