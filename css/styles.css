@@ -599,7 +599,7 @@ body.nav-open .nav__toggle span:nth-child(3) { transform: translateY(-7px) rotat
 
 .card {
   position: relative;
-  padding: clamp(30px, 3.4vw, 44px);
+  padding: clamp(20px, 3.4vw, 24px);
   background: var(--paper);
   border: 1px solid var(--line);
   transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease),
@@ -1149,7 +1149,7 @@ form.hide { display: none; }
 /* In Focus gallery (About) */
 .gallery {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: clamp(16px, 2vw, 26px);
   align-items: start;
 }
