@@ -1277,18 +1277,6 @@ form.hide { display: none; }
   justify-content: center;
   overflow: hidden;
 }
-/* Blurred fill so mixed aspect ratios never leave dead black bars */
-.carousel__media::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: var(--slide-img);
-  background-size: cover;
-  background-position: center;
-  filter: blur(28px) brightness(0.4);
-  transform: scale(1.2);
-  z-index: 0;
-}
 .carousel__media img {
   position: relative;
   z-index: 1;

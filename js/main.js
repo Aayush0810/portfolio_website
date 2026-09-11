@@ -57,6 +57,7 @@
     var prefix = el.getAttribute("data-prefix") || "";
     var suffix = el.getAttribute("data-suffix") || "";
     var dur = 1600, start = null;
+    el.__counting = true;
     var step = function (ts) {
       if (!start) start = ts;
       var p = Math.min((ts - start) / dur, 1);
@@ -64,14 +65,15 @@
       var val = (target * eased).toFixed(decimals);
       el.textContent = prefix + val + suffix;
       if (p < 1) requestAnimationFrame(step);
-      else el.textContent = prefix + target.toFixed(decimals) + suffix;
+      else { el.textContent = prefix + target.toFixed(decimals) + suffix; el.__counting = false; }
     };
     requestAnimationFrame(step);
   };
   if ("IntersectionObserver" in window && counters.length) {
+    // Re-run the count-up each time the stat scrolls back into view
     var cio = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
-        if (e.isIntersecting) { animateCount(e.target); cio.unobserve(e.target); }
+        if (e.isIntersecting && !e.target.__counting) animateCount(e.target);
       });
     }, { threshold: 0.6 });
     counters.forEach(function (el) { cio.observe(el); });
